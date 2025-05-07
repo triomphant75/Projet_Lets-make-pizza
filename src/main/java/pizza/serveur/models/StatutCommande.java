@@ -41,7 +41,7 @@ public enum StatutCommande {
     ANNULEE;
 
     /**
-     * @return Le nom du statut en minuscules pour être utilisé dans les topics MQTT
+     * returne Le nom du statut en minuscules pour être utilisé dans les topics MQTT
      */
     @Override
     public String toString() {

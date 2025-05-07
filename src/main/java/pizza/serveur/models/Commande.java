@@ -15,8 +15,7 @@ public class Commande {
 
     /**
      * Constructeur
-     * @param id Identifiant unique de la commande
-     * @param pizzasCommandees Map avec le nom des pizzas et leur quantité
+     * 
      */
     public Commande(String id, Map<String, Integer> pizzasCommandees) {
         this.id = id;
@@ -26,28 +25,28 @@ public class Commande {
     }
 
     /**
-     * @return Identifiant de la commande
+     * return Identifiant de la commande
      */
     public String getId() {
         return id;
     }
 
     /**
-     * @return Map des pizzas commandées et leurs quantités
+     * return Map des pizzas commandées et leurs quantités
      */
     public Map<String, Integer> getPizzasCommandees() {
         return pizzasCommandees;
     }
 
     /**
-     * @return Date de création de la commande
+     * return Date de création de la commande
      */
     public LocalDateTime getDateCreation() {
         return dateCreation;
     }
 
     /**
-     * @return Statut actuel de la commande
+     * return Statut actuel de la commande
      */
     public StatutCommande getStatut() {
         return statut;
@@ -55,7 +54,7 @@ public class Commande {
 
     /**
      * Met à jour le statut de la commande
-     * @param statut Nouveau statut
+     * param statut Nouveau statut
      */
     public void setStatut(StatutCommande statut) {
         this.statut = statut;
@@ -63,7 +62,7 @@ public class Commande {
 
     /**
      * Calcule le nombre total de pizzas dans la commande
-     * @return Nombre total de pizzas
+     * return Nombre total de pizzas
      */
     public int getNombreTotalPizzas() {
         return pizzasCommandees.values().stream()

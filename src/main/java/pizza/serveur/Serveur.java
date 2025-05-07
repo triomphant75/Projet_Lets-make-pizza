@@ -2,8 +2,17 @@ package pizza.serveur;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Random;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -321,37 +330,57 @@ public class Serveur {
     
     private List<Pizzaiolo.Pizza> cuirePizzas(List<Pizzaiolo.Pizza> pizzasPreparees) {
         List<Pizzaiolo.Pizza> pizzasCuites = new ArrayList<>();
-        List<List<Pizzaiolo.Pizza>> lotsPizzas = new ArrayList<>();
-        
-        // Diviser les pizzas en lots selon la capacité du four
-        int tailleDuLot = Pizzaiolo.MAX_PIZZAS_AU_FOUR;
-        for (int i = 0; i < pizzasPreparees.size(); i += tailleDuLot) {
-            int finLot = Math.min(i + tailleDuLot, pizzasPreparees.size());
-            lotsPizzas.add(pizzasPreparees.subList(i, finLot));
+        if (pizzasPreparees.isEmpty()) {
+            return pizzasCuites;
         }
-        
+    
+        // Division en lots de 6 pizzas maximum
+        int tailleLot = Pizzaiolo.MAX_PIZZAS_AU_FOUR;
+        List<List<Pizzaiolo.Pizza>> lots = new ArrayList<>();
+    
+        for (int i = 0; i < pizzasPreparees.size(); i += tailleLot) {
+            int fin = Math.min(i + tailleLot, pizzasPreparees.size());
+            lots.add(new ArrayList<>(pizzasPreparees.subList(i, fin)));
+        }
+    
+        LOGGER.info("Division en " + lots.size() + " lot(s) pour cuisson");
+    
         // Cuire chaque lot
-        for (List<Pizzaiolo.Pizza> lotCourant : lotsPizzas) {
-            boolean reussi = false;
-            while (!reussi) {
+        for (List<Pizzaiolo.Pizza> lot : lots) {
+            boolean lotCuit = false;
+            
+            while (!lotCuit && !Thread.currentThread().isInterrupted()) {
                 try {
-                    List<Pizzaiolo.Pizza> lotCuit = pizzaiolo.cuire(lotCourant);
-                    pizzasCuites.addAll(lotCuit);
-                    reussi = true;
-                    LOGGER.fine("Lot de " + lotCourant.size() + " pizzas cuit avec succès");
+                    LOGGER.info("Tentative de cuisson pour lot de " + lot.size() + " pizza(s)");
+                    List<Pizzaiolo.Pizza> resultatCuisson = pizzaiolo.cuire(lot);
+                    pizzasCuites.addAll(resultatCuisson);
+                    lotCuit = true;
+                    LOGGER.info("Lot cuit avec succès : " + resultatCuisson.size() + " pizza(s)");
                 } catch (IllegalStateException e) {
-                    // Four occupé, on attend un peu
-                    LOGGER.fine("Attente pour l'accès au four: " + e.getMessage());
+                    LOGGER.warning("Four occupé - Attente...");
                     try {
-                        Thread.sleep(500);
+                        // Attente progressive avec vérification d'interruption
+                        Thread.sleep(1000); // 1 seconde entre les tentatives
                     } catch (InterruptedException ex) {
                         Thread.currentThread().interrupt();
-                        throw new RuntimeException("Cuisson interrompue", ex);
+                        LOGGER.warning("Cuisson interrompue pendant l'attente");
+                        break;
                     }
                 }
             }
+    
+            if (!lotCuit) {
+                throw new IllegalStateException("Cuisson annulée (interruption ou erreur)");
+            }
         }
-        
+    
+        // Validation finale
+        if (pizzasCuites.size() != pizzasPreparees.size()) {
+            throw new IllegalStateException("Incohérence détectée : " + 
+                pizzasPreparees.size() + " pizzas préparées mais " + 
+                pizzasCuites.size() + " cuites");
+        }
+    
         return pizzasCuites;
     }
     
