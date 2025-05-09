@@ -93,3 +93,25 @@
 .secondary-button:pressed {
     -fx-background-color: #d1d8e0;
 }
+
+/* Liste des pizzas */
+.pizza-grid {
+    -fx-background-color: white;
+}
+
+.pizza-grid Label {
+    -fx-font-size: 14px;
+}
+
+.pizza-grid .column-header {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-padding: 5px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Spinner de quantité */
+.spinner {
+    -fx-pref-width: 80px;
+}
