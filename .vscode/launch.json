@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "java",
+        "name": "ClientAppLauncher",
+        "request": "launch",
+        "mainClass": "pizza.client.ClientAppLauncher",
+        "projectName": "lets-make-pizza"
+      },
+      {
+        "type": "java",
+        "name": "Serveur",
+        "request": "launch",
+        "mainClass": "pizza.serveur.Serveur",
+        "projectName": "lets-make-pizza"
+      },
+      {
+        "type": "java",
+        "name": "ServeurApp",
+        "request": "launch",
+        "mainClass": "pizza.serveur.ServeurApp",
+        "projectName": "lets-make-pizza"
+      },
+      {
+        "type": "java",
+        "name": "Client",
+        "request": "launch",
+        "mainClass": "pizza.serveur.ServeurApp",
+        "projectName": "lets-make-pizza"
+      },
+      {
+        "type": "java",
+        "name": "Lancer ClientApp",
+        "request": "launch",
+        "mainClass": "pizza.client.ClientApp",
+        "vmArgs": "--module-path C:/javafx-sdk-24.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      }
+    ],
+    "classPaths": [
+        "target/classes"  // c'est ici que VS Code doit trouver le styles.css
+      ]
+    
+  }
+  

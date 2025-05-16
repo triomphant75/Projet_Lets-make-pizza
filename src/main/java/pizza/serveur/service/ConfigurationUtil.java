@@ -14,9 +14,7 @@ public class ConfigurationUtil {
     private static final String FICHIER_CONFIGURATION = "config.properties";
 
     /**
-     * Charge les propriétés de configuration depuis le fichier
-     * @return Propriétés chargées ou propriétés par défaut si le fichier est absent
-     * @throws IOException En cas d'erreur lors de la lecture du fichier
+     * Charge les propriétés de configuration depuis le fichier 
      */
     public static Properties chargerConfiguration() throws IOException {
         Properties props = new Properties();

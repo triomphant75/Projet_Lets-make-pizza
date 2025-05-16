@@ -32,7 +32,7 @@ public class Pizzaiolo {
 
    }
 
-   public List<Pizzaiolo.DetailsPizza> getListePizzas() {
+   public List<DetailsPizza> getListePizzas() {
       return Arrays.asList(new Pizzaiolo.DetailsPizza("margherita", Arrays.asList(Pizzaiolo.Ingredient.SAUCE_TOMATE, Pizzaiolo.Ingredient.MOZARELLA, Pizzaiolo.Ingredient.BASILIC), 5), new Pizzaiolo.DetailsPizza("quattro stagioni", Arrays.asList(Pizzaiolo.Ingredient.SAUCE_TOMATE, Pizzaiolo.Ingredient.MOZARELLA, Pizzaiolo.Ingredient.JAMBON, Pizzaiolo.Ingredient.CHAMPIGNONS, Pizzaiolo.Ingredient.POIVRON, Pizzaiolo.Ingredient.ARTICHAUT, Pizzaiolo.Ingredient.OLIVES), 9), new Pizzaiolo.DetailsPizza("reine", Arrays.asList(Pizzaiolo.Ingredient.SAUCE_TOMATE, Pizzaiolo.Ingredient.MOZARELLA, Pizzaiolo.Ingredient.JAMBON, Pizzaiolo.Ingredient.CHAMPIGNONS, Pizzaiolo.Ingredient.OLIVES), 7), new Pizzaiolo.DetailsPizza("napoli", Arrays.asList(Pizzaiolo.Ingredient.SAUCE_TOMATE, Pizzaiolo.Ingredient.ANCHOIS, Pizzaiolo.Ingredient.OLIVES), 5), new Pizzaiolo.DetailsPizza("hawaiana", Arrays.asList(Pizzaiolo.Ingredient.SAUCE_TOMATE, Pizzaiolo.Ingredient.FROMAGE, Pizzaiolo.Ingredient.JAMBON, Pizzaiolo.Ingredient.ANANAS), 8));
    }
 
@@ -130,7 +130,7 @@ public class Pizzaiolo {
       private final Pizzaiolo.Statut statut;
       private final String nom;
 
-      private Pizza(String nom, Pizzaiolo.Statut statut) {
+      Pizza(String nom, Pizzaiolo.Statut statut) {
          this.statut = statut;
          this.nom = nom;
       }

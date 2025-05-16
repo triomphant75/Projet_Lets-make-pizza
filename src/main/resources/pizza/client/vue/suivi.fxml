@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="30.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="pizza.client.controlleur.SuiviControleur" stylesheets="@/css/style.css">
+    <padding>
+        <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+    </padding>
+    
+    <Label text="Commande en cours de préparation" styleClass="section-title">
+        <font>
+            <Font name="System Bold" size="24.0"/>
+        </font>
+    </Label>
+    
+    <HBox alignment="CENTER" spacing="30.0">
+        <VBox alignment="CENTER_LEFT" spacing="15.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="lblStatut" text="Statut: En attente" styleClass="status-label">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+            
+            <Label fx:id="lblCommande" text="Détails de la commande" styleClass="command-details" wrapText="true">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </Label>
+            
+            <ProgressBar fx:id="progressBar" style="-fx-accent: #e74c3c;" progress="0.0">
+                <VBox.margin>
+                    <Insets top="20.0"/>
+                </VBox.margin>
+            </ProgressBar>
+            
+        </VBox>
+        
+        <ImageView fx:id="imgPizza" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@/images/pizza.png"/>
+        </ImageView>
+    </HBox>
+</VBox>

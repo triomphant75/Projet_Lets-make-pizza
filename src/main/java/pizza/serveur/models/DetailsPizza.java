@@ -12,10 +12,7 @@ public class DetailsPizza {
     private final int prix;
 
     /**
-     * Constructeur
-     * @param nom Nom de la pizza
-     * @param ingredients Liste des ingrédients
-     * @param prix Prix de la pizza
+     * Constructeur pour initialiser les détails de la pizza
      */
     public DetailsPizza(String nom, List<String> ingredients, int prix) {
         this.nom = nom;
@@ -24,21 +21,21 @@ public class DetailsPizza {
     }
 
     /**
-     * @return Nom de la pizza
+     returne Nom de la pizza
      */
     public String getNom() {
         return nom;
     }
 
     /**
-     * @return Liste des ingrédients
+     *returne Liste des ingrédients
      */
     public List<String> getIngredients() {
         return ingredients;
     }
 
     /**
-     * @return Prix de la pizza
+     * returne Prix de la pizza
      */
     public int getPrix() {
         return prix;

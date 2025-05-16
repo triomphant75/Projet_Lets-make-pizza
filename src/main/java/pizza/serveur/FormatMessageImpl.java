@@ -8,7 +8,6 @@ import pizza.serveur.models.DetailsPizza;
 
 /**
  * Implémentation du format de sérialisation/désérialisation
- * Format simple: CSV pour cet exemple
  */
 public class FormatMessageImpl implements FormatMessage {
     
