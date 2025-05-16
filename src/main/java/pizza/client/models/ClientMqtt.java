@@ -278,7 +278,12 @@ public class ClientMqtt {
     
     /**
      * Extrait le statut à partir du topic
+<<<<<<< HEAD
 
+=======
+     * @param topic Topic MQTT
+     * @return Le statut extrait du topic ou chaîne vide si non trouvé
+>>>>>>> 99a625eaa0444bd6703b0e230d42aeced12a0a45
      */
     private String extraireStatutDuTopic(String topic) {
         String[] segments = topic.split("/");
@@ -291,6 +296,15 @@ public class ClientMqtt {
     
     /**
      * Envoie une commande et s'abonne pour suivre son avancement
+<<<<<<< HEAD
+=======
+     * @param idCommande Identifiant unique de la commande
+     * @param commande Contenu de la commande au format attendu par le serveur
+     * @param onStatutChange Callback appelé quand le statut change
+     * @param onCancel Callback appelé si la commande est annulée
+     * @param onDelivery Callback appelé à la livraison
+     * @throws MqttException En cas d'erreur MQTT
+>>>>>>> 99a625eaa0444bd6703b0e230d42aeced12a0a45
      */
     public void envoyerCommande(String idCommande, String commande, 
                               Consumer<String> onStatutChange, 
