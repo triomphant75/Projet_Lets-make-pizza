@@ -223,6 +223,7 @@ Logger.getLogger("").setLevel(Level.FINE);
 ## 👨‍💻 Développement
 
 **Structure du projet**
+
 lets-make-pizza/
 
 ├── src/
