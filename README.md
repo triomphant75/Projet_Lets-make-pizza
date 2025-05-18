@@ -272,7 +272,7 @@ lets-make-pizza/
 **KONE Moustapha** - Interface de menu
 
 ## 📄 Licence
-Ce projet a été développé dans le cadre du Master 1 MIAGE à l'Institut des Sciences du Digital.
+Ce projet a été développé dans le cadre du Master 1 MIAGE à l'Institut des Sciences du Digital Management et Cognition.
 
 
 
